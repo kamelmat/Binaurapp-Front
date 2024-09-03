@@ -1,42 +1,42 @@
 import React from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import injectContext from "./store/appContext.js";
+import injectContext from "../src/js/store/appContext.js";
 // Custom Component
-import ScrollToTop from "./component/ScrollToTop.jsx";
-import { BackendURL } from "./component/BackendURL.jsx";
-import { Navbar } from "./component/Navbar.jsx";
-import { Footer } from "./component/Footer.jsx";
-import { OffCanvas } from "./component/OffCanvas.jsx";
+import ScrollToTop from "../src/js/component/ScrollToTop.jsx";
+import { BackendURL } from "../src/js/component/BackendURL.jsx";
+import { Navbar } from "../src/js/component/Navbar.jsx";
+import { Footer } from "../src/js/component/Footer.jsx";
+import { OffCanvas } from "../src/js/component/OffCanvas.jsx";
 // Custom Pages
-import { Home } from "./pages/Home.jsx";
-import { Demo } from "./pages/Demo.jsx";
-import { Single } from "./pages/Single.jsx";
-import { SignUp } from "./pages/SignUp.jsx";
-import { Login } from "./pages/Login.jsx";
-import { AboutUs } from "./pages/AboutUs.jsx";
-import { Binaural } from "./pages/Binaural.jsx";
-import { Profile } from "./pages/Profile.jsx";
-import { Playlist } from "./pages/Playlist.jsx";
-import { Soundscape } from "./pages/Soundscape.jsx";
-import { Tutorial } from "./pages/Tutorial.jsx";
-import { Mixes } from "./pages/Mixes.jsx";
-import { Alpha } from "./pages/Alpha.jsx";
-import { Theta } from "./pages/Theta.jsx";
-import { Delta } from "./pages/Delta.jsx";
-import { Meditation } from "./pages/Meditation.jsx";
-import { Sleep } from "./pages/Sleep.jsx";
-import { Focus } from "./pages/Focus.jsx";
-import { Dashboard } from "./pages/Dashboard.jsx";
-import { Mixer } from "./pages/Mixer.jsx";
-import { UploadBinaural } from "./pages/UploadBinaural.jsx";
-import { UploadSoundscape } from "./pages/UploadSoundscape.jsx";
-import { UploadTutorial } from "./pages/UploadTutorial.jsx";
-import { Mail } from "./pages/Mail.jsx";
+import { Home } from "../src/js/views/Home.jsx";
+import { Demo } from "../src/js/views/Demo.jsx";
+import { Single } from "../src/js/views/Single.jsx";
+import { SignUp } from "../src/js/views/SignUp.jsx";
+import { Login } from "../src/js/views/Login.jsx";
+import { AboutUs } from "../src/js/views/AboutUs.jsx";
+import { Binaural } from "../src/js/views/Binaural.jsx";
+import { Profile } from "../src/js/views/Profile.jsx";
+import { Playlist } from "../src/js/views/Playlist.jsx";
+import { Soundscape } from "../src/js/views/Soundscape.jsx";
+import { Tutorial } from "../src/js/views/Tutorial.jsx";
+import { Mixes } from "../src/js/views/Mixes.jsx";
+import { Alpha } from "../src/js/views/Alpha.jsx";
+import { Theta } from "../src/js/views/Theta.jsx";
+import { Delta } from "../src/js/views/Delta.jsx";
+import { Meditation } from "../src/js/views/Meditation.jsx";
+import { Sleep } from "../src/js/views/Sleep.jsx";
+import { Focus } from "../src/js/views/Focus.jsx";
+import { Dashboard } from "../src/js/views/Dashboard.jsx";
+import { Mixer } from "../src/js/views/Mixer.jsx";
+import { UploadBinaural } from "../src/js/views/UploadBinaural.jsx";
+import { UploadSoundscape } from "../src/js/views/UploadSoundscape.jsx";
+import { UploadTutorial } from "../src/js/views/UploadTutorial.jsx";
+import { Mail } from "../src/js/views/Mail.jsx";
 
 // Spotify Auth App
-import { SpotifyCallback } from './component/SpotifyCallback.jsx';
-import { EditMixes } from "./pages/EditMixes.jsx";
-import { Techologies } from "./pages/Technologies.jsx";
+import { SpotifyCallback } from '../src/js/component/SpotifyCallback.jsx';
+import { EditMixes } from "../src/js/views/EditMixes.jsx";
+import { Techologies } from "../src/js/views/Technologies.jsx";
 
 
 

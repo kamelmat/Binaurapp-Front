@@ -1,5 +1,5 @@
 {
-	"name": "react-hello-webapp",
+	"name": "Binaurapp Front",
 	"engines": {
 		"node": "16.x"
 	},
@@ -12,8 +12,8 @@
 		"deploy": "node deploy-to-github.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "Matias Kamelman & Pablo Orduña",
+		"url": "www.binaurapp.com"
 	},
 	"contributors": [
 		{
@@ -74,9 +74,12 @@
 		]
 	},
 	"dependencies": {
+		"date-fns": "^3.6.0",
+		"express": "^4.19.2",
 		"prop-types": "^15.7.2",
 		"query-string": "^7.0.1",
 		"react": "^18.2.0",
+		"react-bootstrap": "^2.10.4",
 		"react-dom": "^18.2.0",
 		"react-polyfills": "0.0.1",
 		"react-router": "^6.0.2",
