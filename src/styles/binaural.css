@@ -142,13 +142,13 @@
 
 #textHeader {
     margin-top: 15px;
-    color: #ffffff;
+    color: #F8F8F8;
     font-family: "Baumans", system-ui;
 }
 
 #textBody {
     margin-top: 5px;
-    color: #ffffff;
+    color: #F8F8F8;
     font-family: "Baumans", system-ui;
 }
 
@@ -159,7 +159,7 @@
 
 #infoText {
     margin-top: 5px;
-    color: #ffffff;
+    color: #F8F8F8;
     font-family: "Baumans", system-ui;
 }
 
