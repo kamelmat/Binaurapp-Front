@@ -10,6 +10,7 @@ import mixer from "../../img/Mixer.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+
 export const Dashboard = () => {
     const { store, actions } = useContext(Context)
     const navigate = useNavigate();
@@ -21,16 +22,11 @@ export const Dashboard = () => {
         }
     }, [store.isLogin, navigate]);
 
-    const handleStartTour = () => {
-        console.log("Start Tour button clicked");
-        navigate('/mixerwithtour');
-    };
-
     if (!store.isLogin) {
         return null;
     }
     return (
-        <div className="dashboard-container">
+        <>
             <div className="row playlist-area" id="MixItUp859BE6">
                 <div className="mix col-lg-6 col-md-6 col-sm-6 col-xsm-6 genres">
                     <div className="playlist-item">
@@ -91,11 +87,6 @@ export const Dashboard = () => {
                     </>
                 )}
             </div>
-            <div className="tour-button-container">
-                <button onClick={handleStartTour} className="tour-start-button">
-                    Start Tour
-                </button>
-            </div>
-        </div>
+        </>
     )
 }
