@@ -37,7 +37,8 @@ import { Mail } from "../src/js/views/Mail.jsx";
 import { SpotifyCallback } from '../src/js/component/SpotifyCallback.jsx';
 import { EditMixes } from "../src/js/views/EditMixes.jsx";
 import { Techologies } from "../src/js/views/Technologies.jsx";
-
+import { TourGuide } from "./js/component/TourGuide.js";
+import { MixerWithTour } from "../src/js/component/MixerWithTOur.jsx";
 
 
 // Componente para manejar la lógica de renderizado condicional
@@ -46,7 +47,7 @@ const ConditionalNavbarOrSidebar = () => {
 
     // Rutas donde se debe mostrar el Navbar
     const navbarRoutes = ["/", "/dashboard"];
-    
+
     const showNavbar = navbarRoutes.includes(location.pathname);
 
     return (
@@ -97,6 +98,8 @@ const Layout = () => {
                         <Route path="/callback" element={<SpotifyCallback />} />
                         <Route path="/mail" element={<Mail />} />
                         <Route path="/technologies" element={<Techologies />} />
+                        <Route path="/TourGuide" element={<TourGuide />} />
+                        <Route path="/MixerWithTour" element={<MixerWithTour />} />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
