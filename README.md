@@ -3,7 +3,7 @@
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/kamelmat/binaurapp.git)
 
 <p align="center">
-  <img src="https://github.com/kamelmat/binaurapp/blob/master/src/img/logo.png?raw=true" alt="Binaurapp Logo" width="200"/>
+  <img src="https://github.com/kamelmat/Binaurapp-Front/blob/main/src/img/Logo_Binaurapp.JPG?raw=true" alt="Binaurapp Logo" width="200"/>
 </p>
 
 ## Overview 🌟
