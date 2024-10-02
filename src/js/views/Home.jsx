@@ -10,8 +10,8 @@ export const Home = () => {
 	return (
 		<div className="container-fluid home">
 			<div className="row justify-content-center">
-				<div className="className col-12 text-center">
-					<div className="className div mb-4">
+				<div className=" col-5 text-center">
+					<div className="mb-4">
 						<img className="home-image img-fluid" alt="Stocksy" src={homepic} />
 						<div className="text-wrapper">What’s Binaurapp?</div>
 							<p className="content">
