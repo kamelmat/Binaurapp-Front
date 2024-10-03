@@ -140,7 +140,8 @@ export const Tutorial = () => {
                             <div id="start-section" className="row">
                                 <div className="col-lg-3 order-lg-1 ">
                                     <figure className="effect-sadie">
-                                        <img id="imageCard" className="rounded" src={"https://t4.ftcdn.net/jpg/08/17/40/67/240_F_817406710_lQakfpC6ZYSlsumK4CdhFCbDk3kcHdnr.jpg"} alt="Image" onClick={handleDisplayInfoFirst}/>
+                                        <img id="imageCard" className="rounded" src={"https://t4.ftcdn.net/jpg/08/17/40/67/240_F_817406710_lQakfpC6ZYSlsumK4CdhFCbDk3kcHdnr.jpg"} alt="Image"
+                                        onClick={handleDisplayInfoFirst}/>
                                         <figcaption>
                                             <h2>More info</h2>
                                         </figcaption>
@@ -168,8 +169,8 @@ export const Tutorial = () => {
                             <div id="mixer-section" className="row">
                                 <div className="col-lg-3 order-lg-1 ">
                                     <figure className="effect-sadie">
-                                        <img id="imageCard" className="rounded" src={"https://t4.ftcdn.net/jpg/07/50/49/35/240_F_750493557_N6hSYv6tcZhUhK5SShxrWn9bENnKESAX.jpg"} alt="Image" onClick={handleDisplayInfoSecond} />
-                                        <figcaption>
+                                        <img id="imageCard" className="rounded" src={"https://t4.ftcdn.net/jpg/07/50/49/35/240_F_750493557_N6hSYv6tcZhUhK5SShxrWn9bENnKESAX.jpg"} alt="Image"/>
+                                        <figcaption onClick={handleDisplayInfoSecond} >
                                             <h2>More info</h2>
                                         </figcaption>
                                     </figure>
@@ -196,8 +197,8 @@ export const Tutorial = () => {
                             <div id="playlist-section" className="row">
                                 <div className="col-lg-3 order-lg-1 ">
                                 <figure className="effect-sadie">
-                                    <img id="imageCard" className="rounded" src={"https://t3.ftcdn.net/jpg/08/12/94/64/240_F_812946424_rGuEESUckxezrXv1oMy7zHUVtIk8TtPX.jpg"} alt="Image" onClick={handleDisplayInfoThird}/>
-                                    <figcaption>
+                                    <img id="imageCard" className="rounded" src={"https://t3.ftcdn.net/jpg/08/12/94/64/240_F_812946424_rGuEESUckxezrXv1oMy7zHUVtIk8TtPX.jpg"} alt="Image"/>
+                                    <figcaption onClick={handleDisplayInfoThird}>
                                         <h2>More info</h2>
                                     </figcaption>
                                 </figure>
@@ -224,8 +225,8 @@ export const Tutorial = () => {
                             <div id="what-section" className="row">
                                 <div className="col-lg-3 order-lg-1 ">
                                     <figure className="effect-sadie">
-                                        <img id="imageCard" className="rounded" src={"https://t3.ftcdn.net/jpg/06/96/32/52/240_F_696325264_lODIXcco4tGRdjJzZAlXFC87wOoR398u.jpg"} alt="Image" onClick={handleDisplayInfoFourth} />
-                                        <figcaption>
+                                        <img id="imageCard" className="rounded" src={"https://t3.ftcdn.net/jpg/06/96/32/52/240_F_696325264_lODIXcco4tGRdjJzZAlXFC87wOoR398u.jpg"} alt="Image"/>
+                                        <figcaption onClick={handleDisplayInfoFourth} >
                                             <h2>More info</h2>
                                         </figcaption>
                                     </figure>
