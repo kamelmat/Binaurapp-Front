@@ -306,6 +306,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setMixesList: (mixes) => {
 				setStore({ mixesList: mixes });
 				},
+				sendEmail: async (emailData) => {
+					const store = getStore();
+					const token = localStorage.getItem('token'); // Assuming you store the JWT token in localStorage
+
+					try {
+						const response = await fetch(`${process.env.BACKEND_URL}/api/send-email`, {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+								'Authorization': `Bearer ${token}` // Include the JWT token
+							},
+							body: JSON.stringify(emailData),
+						});
+
+						const data = await response.json();
+
+						if (response.ok) {
+							return { success: true, message: data.message };
+						} else {
+							return { success: false, message: data.error || 'Failed to send email. Please try again.' };
+						}
+					} catch (error) {
+						console.error('Error sending email:', error);
+						return { success: false, message: 'An error occurred while sending the email. Please try again.' };
+					}
+				},
 		}
 	}
 };
