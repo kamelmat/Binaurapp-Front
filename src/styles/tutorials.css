@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Baumans&display=swap");
+
+.baumans-regular {
+    font-family: "Baumans", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#greenButton {
+    background-color: #c8f560;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4.6px 5px #00000040;
+    font-family: "Baumans", system-ui;
+    height: 64px; /* Fixed height */
+    width: 200px; /* Fixed width */
+    overflow: hidden;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    align-items: center; /* Center text vertically */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center text horizontally */
+}
+
+#greenButtonAuto {
+    background-color: #c8f560;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4.6px 5px #00000040;
+    font-family: "Baumans", system-ui;
+    height: 45px;
+    width: auto;
+    overflow: hidden;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    align-items: end;
+}
+
+/* Unused styles below can be removed */
+
+/* Remove unused styles */
+
+/* Example of unused styles */
+/* .unused-class { ... } */
+
+/* Loader styles */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+}
+
+#loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #3498db;
+
+    -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+
+    z-index: 1001;
+}
+
+/* Media Queries */
+@media (max-width: 4096px){
+    .tm-albums-container { max-width: none; }
+    .tm-welcome-section { height: 70vh; }
+    .tutorial-welcome-section { height: 70vh; }
+    figure.effect-sadie h2 { bottom: 20%; }
+    .form-inline .form-control.tm-search-input { width: 60%; }
+    .tm-mt-big { margin-top: 60px; }
+    .tm-mb-big { margin-bottom: 80px; }
+    .tm-mb-medium { margin-bottom: 40px; }
+    iframe { width: 100%; }
+    #imageCard { height: 216px; width: 303px; object-fit: cover; }
+    #textHeader { font-size: 18px; }
+    #textBody { font-size: 16px; }
+    #infoText { font-size: 16px; }
+    #greenButton { font-size: 16px; height: 64px; width: 100%; margin-bottom: 4px;}
+    #greenButtonAlone { font-size: 16px; height: 40px; margin-bottom: 4px;}
+    #glowCard1:hover {box-shadow: 0 0 40px 10px #e0d648;}
+    #glowCard2:hover {box-shadow: 0 0 40px 10px #ff00c8;}
+    #glowCard3:hover {box-shadow: 0 0 40px 10px #ffae00;}
+    #glowCard4:hover {box-shadow: 0 0 40px 10px #0051ff;}
+    #glowCard5:hover {box-shadow: 0 0 40px 10px #00ffd5;}
+}
+
+/* Additional media queries can be cleaned similarly */
+
+/* Center content inside #binaurappCard for tablet and mobile resolutions */
+@media (max-width: 992px) { /* For screens below 11 inches */
+    #binaurappCard {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        text-align: center; /* Center text */
+        width: 100%; /* Ensure full width */
+    }
+
+    #binaurappCard .row {
+        width: 100%; /* Ensure the row takes full width */
+        justify-content: center; /* Center the row content */
+    }
+
+    #textHeader {
+        width: 100%; /* Make text take full width */
+        margin: 0 auto; /* Center text */
+        text-align: center; /* Center text */
+    }
+
+    #textBody {
+        width: 100%; /* Make text take full width */
+        margin: 0 auto; /* Center text */
+        text-align: justify; /* Justify text */
+    }
+
+    #buttonContainer {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons */
+        width: 100%; /* Full width for buttons */
+    }
+
+    #greenButton, #greenButtonAlone {
+        width: 100%; /* Make buttons take full width */
+        margin: 4px 0; /* Space between buttons */
+        text-align: center; /* Center button text */
+    }
+
+    /* Center the image */
+    #imageCard {
+        display: block; /* Ensure the image is treated as a block element */
+        margin: 0 auto; /* Center horizontally */
+        max-width: 100%; /* Responsive image */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
+
+/* Reset text alignment for larger screens */
+@media (min-width: 993px) { /* For screens above 992px */
+    #textHeader, #textBody {
+        text-align: left; /* Reset text alignment */
+    }
+
+    #buttonContainer {
+        display: flex;
+        flex-direction: row; /* Align buttons in a row */
+        justify-content: flex-start; /* Align buttons to the left */
+    }
+
+    #buttonContainer button {
+        width: auto; /* Reset button width */
+        margin: 0 4px; /* Space between buttons */
+    }
+}
+
+/* Center the image with id=imageCard for tablet resolution (768 x 1024) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #binaurappCard .row {
+        display: flex; /* Ensure the row is a flex container */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    #imageCard {
+        display: block; /* Ensure the image is treated as a block element */
+        margin: 0 auto; /* Center horizontally */
+    }
+}
+
+/* Additional specific adjustments for 768px and below */
+@media (max-width: 768px) {
+    #binaurappCard {
+        padding: 10px; /* Optional: Add padding for better spacing */
+    }
+
+    #textHeader, #textBody {
+        font-size: 16px; /* Adjust font size for smaller screens */
+        text-align: center; /* Center text for smaller screens */
+    }
+
+    #greenButton, #greenButtonAlone {
+        font-size: 14px; /* Adjust button font size for smaller screens */
+    }
+
+    /* Ensure buttons stack vertically in the button container */
+    #buttonContainer {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons */
+        width: 100%; /* Full width for buttons */
+    }
+
+    #buttonContainer button {
+        width: 100%; /* Make buttons take full width */
+        margin: 4px 0; /* Space between buttons */
+    }
+}
+
+/* Additional specific adjustments for 390px and below */
+@media (max-width: 390px) {
+    #textHeader, #textBody {
+        font-size: 14px; /* Further adjust font size for very small screens */
+        text-align: center; /* Center text for very small screens */
+    }
+
+    #greenButton, #greenButtonAlone {
+        font-size: 12px; /* Further adjust button font size for very small screens */
+    }
+}
+
+/* Ensure the albums container allows for centering */
+.tm-albums-container {
+    display: flex; /* Ensure it is a flex container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+/* Ensure cards are centered */
+.card {
+    display: flex; /* Ensure card is a flex container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    width: 100%; /* Full width */
+    margin: 10px 0; /* Add some margin for spacing */
+}
+
+/* Custom responsive text alignment */
+@media (max-width: 576px) {
+    .custom-text {
+        text-align: center; /* Center text on small screens */
+    }
+}
+
+@media (min-width: 577px) {
+    .custom-text {
+        text-align: left; /* Left-align text on larger screens */
+    }
+}
+
+/* Adjust button styles for smaller screens */
+#buttonContainer button {
+    width: auto; /* Reset button width to auto */
+    max-width: 200px; /* Set a maximum width for buttons */
+    margin: 4px 0; /* Space between buttons */
+    text-align: center; /* Center button text */
+}
+
+/* Ensure h5 has a proper font size */
+#textHeader {
+    font-size: 1.5rem; /* Adjust this value as needed */
+    font-weight: bold; /* Ensure it appears bold */
+    margin: 10px 0; /* Add some margin for spacing */
+}
+
+/* Adjust h5 size for smaller screens */
+@media (max-width: 768px) {
+    #textHeader {
+        font-size: 1.25rem; /* Smaller size for mobile */
+    }
+}
+#buttonContainer {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically by default */
+    align-items: center; /* Center buttons horizontally */
+    justify-content: center; /* Center buttons vertically */
+    width: auto; /* Allow it to fit the buttons */
+}
+
+/* For screens 768px and above, align buttons vertically */
+@media (min-width: 768px) {
+    #buttonContainer {
+        flex-direction: column; /* Keep buttons stacked vertically */
+        align-items: center; /* Center buttons horizontally */
+        width: 100%; /* Full width for buttons */
+    }
+}
+
+/* For larger screens, align buttons to the left */
+@media (min-width: 577px) {
+    #buttonContainer {
+        flex-direction: row; /* Align buttons in a row */
+        justify-content: flex-start; /* Align buttons to the left */
+        width: 100%; /* Full width for buttons */
+    }
+
+    #buttonContainer button {
+        margin: 0 4px; /* Space between buttons */
+        width: auto; /* Reset button width */
+    }
+}
+
+/* Center buttons for screens below 768px */
+@media (max-width: 768px) {
+    #buttonContainer {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons */
+        width: 100%; /* Full width for buttons */
+    }
+
+    #buttonContainer button {
+        width: 100%; /* Make buttons take full width */
+        margin: 4px 0; /* Space between buttons */
+    }
+}
+
+/* Center the image with id=imageCard for tablet and mobile resolution (768px and below) */
+@media (max-width: 768px) {
+    #imageCard {
+        display: block; /* Ensure the image is treated as a block element */
+        margin: 0 auto; /* Center horizontally */
+        max-width: 100%; /* Responsive image */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .effect-sadie {
+        text-align: center; /* Center the caption */
+    }
+}
