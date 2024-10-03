@@ -24,7 +24,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			type: null,
 			mixesList: [],
 			spotifyAccessToken: null,
-			MixId: []
+			MixId: [],
+			showTour: true,
+			spotifySelected: false, // New state to track if Spotify is selected
 		},
 		actions: {
 			exampleFunction: () => { getActions().changeColor(0, "green"); },  // Use getActions to call a function within a fuction
@@ -78,6 +80,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			setIsLogin: (login) => { setStore({ isLogin: login }) },
 			setUser: (user) => { setStore({ user: user }) },
+			updateTourPreference: (showTour) => {
+				const store = getStore();
+				if (store.user) {
+					const updatedUser = { ...store.user, showTour: showTour };
+					setStore({ user: updatedUser });
+				}
+			},
 			navigateToSection: (section) => {
 				setStore({ currentSection: section });
 				/* 	window.location.href = `/binaural#${section}`; */
@@ -105,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ trackTwoName: name })
 			},
 			setMixId: (item) => {
-				setStore( {MixId: item})
+				setStore({ MixId: item })
 			},
 			getBinaural: async () => {
 				const uri = `${process.env.BACKEND_URL}/api/binaural`;
@@ -143,7 +152,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify()
 				}
-				const response = await fetch(uri,options);
+				const response = await fetch(uri, options);
 				if (!response.ok) {
 					console.log('Error on Agenda', response.status, response.statusText);
 					return
@@ -263,7 +272,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ soundscapeList: data.results })
 			},
 			editMix: async (mixes_id, dataToSend) => {
-				console.log(dataToSend);					
+				console.log(dataToSend);
 				const uri = `${process.env.BACKEND_URL}/api/mixes/${mixes_id}`;
 				console.log("uri a la que apunta", uri);
 				const token = localStorage.getItem("token");
@@ -286,7 +295,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("updated Mix", MixId);
 			},
 			deleteMix: async (id) => {
-				console.log("Deleting mix with ID:", id); 
+				console.log("Deleting mix with ID:", id);
 				const uri = `${process.env.BACKEND_URL}/api/mixes/${id}`;
 				const token = localStorage.getItem("token");
 				console.log(token);
@@ -295,43 +304,62 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: {
 						'Authorization': `Bearer ${token}`,
 						'Content-Type': 'application/json'
-					},					
-				}				
+					},
+				}
 				const response = await fetch(uri, options);
 				if (!response.ok) {
 					throw new Error(`Error deleting mix: ${response.status} ${response.statusText}`);
 				}
-				},
-				// Add this new action to update mixesList
-				setMixesList: (mixes) => {
+			},
+			// Add this new action to update mixesList
+			setMixesList: (mixes) => {
 				setStore({ mixesList: mixes });
-				},
-				sendEmail: async (emailData) => {
-					const store = getStore();
-					const token = localStorage.getItem('token'); // Assuming you store the JWT token in localStorage
+			},
+			sendEmail: async (emailData) => {
+				const store = getStore();
+				const token = localStorage.getItem('token'); // Assuming you store the JWT token in localStorage
 
-					try {
-						const response = await fetch(`${process.env.BACKEND_URL}/api/send-email`, {
-							method: 'POST',
-							headers: {
-								'Content-Type': 'application/json',
-								'Authorization': `Bearer ${token}` // Include the JWT token
-							},
-							body: JSON.stringify(emailData),
-						});
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/api/send-email`, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}` // Include the JWT token
+						},
+						body: JSON.stringify(emailData),
+					});
 
-						const data = await response.json();
+					const data = await response.json();
 
-						if (response.ok) {
-							return { success: true, message: data.message };
-						} else {
-							return { success: false, message: data.error || 'Failed to send email. Please try again.' };
-						}
-					} catch (error) {
-						console.error('Error sending email:', error);
-						return { success: false, message: 'An error occurred while sending the email. Please try again.' };
+					if (response.ok) {
+						return { success: true, message: data.message };
+					} else {
+						return { success: false, message: data.error || 'Failed to send email. Please try again.' };
 					}
-				},
+				} catch (error) {
+					console.error('Error sending email:', error);
+					return { success: false, message: 'An error occurred while sending the email. Please try again.' };
+				}
+			},
+			startTour: () => {
+				const { startTour } = require('../component/TourGuide');
+				startTour(getActions().navigate);
+			},
+			checkLogin: () => {
+				const token = localStorage.getItem('token');
+				if (token) {
+					// Simulating user data for now
+					const userData = { id: 1, name: "Test User" };
+					setStore({ user: userData, isLogin: true });
+					console.log("User logged in:", userData);
+				} else {
+					setStore({ user: null, isLogin: false });
+					console.log("No user logged in");
+				}
+			},
+			setSpotifySelected: (isSelected) => {
+				setStore({ spotifySelected: isSelected });
+			},
 		}
 	}
 };
