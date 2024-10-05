@@ -62,21 +62,16 @@ export const Mixer = () => {
     const loadAudio = async () => {
         const trackOneUrl = trackOneUrlRef.current.value;
         const trackTwoUrl = trackTwoUrlRef.current.value;
-        console.log(trackTwoUrl, store.track2Url);
-
 
         if (trackOneUrl && trackTwoUrl) {
             try {
-                const newTrackOne = new Audio(trackOneUrl); // Implementar código para dar acceso a las librerías Spotify y Soundwaves
-                const newTrackTwo = new Audio(trackTwoUrl); // Implementar código para dar acceso a la librería Binaurals
+                const newTrackOne = new Audio(trackOneUrl);
+                const newTrackTwo = new Audio(trackTwoUrl);
 
-                // Líneas para conseguir hacer sonar la música
                 newTrackOne.crossOrigin = "anonymous";
                 newTrackTwo.crossOrigin = "anonymous";
 
-                /* const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); */
                 const audioCtx = new window.AudioContext();
-
                 const userSource = audioCtx.createMediaElementSource(newTrackOne);
                 const newUserAnalyser = audioCtx.createAnalyser();
                 userSource.connect(newUserAnalyser);
@@ -102,21 +97,30 @@ export const Mixer = () => {
                 setUserDataArray(newUserDataArray);
                 setProvidedDataArray(newProvidedDataArray);
             } catch (error) {
-                console.error('Error al cargar los archivos de audio:', error);
-                alert('Hubo un problema al cargar los archivos de audio. Verifique las URLs y vuelva a intentarlo.');
+                console.error('Error loading audio files:', error);
+                alert('There was a problem loading the audio files. Please check the URLs and try again.');
             }
         } else {
-            alert('Por favor introduce ambas URLs de audio.');
+            alert('Please enter both audio URLs.');
         }
-
     };
 
     const playAudio = () => {
-        if (trackOne && trackTwo) {
-            trackOne.play();
-            trackTwo.play();
+        if (store.spotifySelected) {
+            // Only play track two if Spotify is selected
+            if (trackTwo) {
+                trackTwo.play();
+            } else {
+                alert('Track two must be uploaded first.');
+            }
         } else {
-            alert('Tracks must be uploaded first.');
+            // Play both tracks if Spotify is not selected
+            if (trackOne && trackTwo) {
+                trackOne.play();
+                trackTwo.play();
+            } else {
+                alert('Tracks must be uploaded first.');
+            }
         }
     };
 
@@ -197,6 +201,12 @@ export const Mixer = () => {
 
     //   Lógica para llamar a la librería Soundscapes
     const handleSoundscapeClick = (url, name) => {
+        // Reset track states first
+        setTrackOne(null); // Reset track one
+        setTrackTwo(null); // Reset track two
+        actions.setSpotifySelected(false)
+        trackOneUrlRef.current.value = url;
+        trackTwoUrlRef.current.value = url;
         actions.setTrack1Url(null);
         actions.setTrack1Url(url);
         actions.setTrackOneName(null);
@@ -254,9 +264,13 @@ export const Mixer = () => {
                     </div>
                     {/* Estas 3 líneas se tendrán que reemplazar con la implementación de las librerias */}
                     <div id="musicLoaders" className="d-flex justify-content-center">
-                        <label type="text" className="text-center" id="track1Url">{store.trackOneName ? store.trackOneName : track1name}</label>
+                        <label type="text" className="text-center" id="track1Url">
+                            {store.spotifySelected ? "SPOTIFY" : (store.trackOneName ? store.trackOneName : track1name)}
+                        </label>
                         <button id="metalButton3" onClick={loadAudio}>Load</button>
-                        <label type="text" className="text-center" id="track2Url">{store.trackTwoName ? store.trackTwoName : track2name}</label>
+                        <label type="text" className="text-center" id="track2Url">
+                            {store.trackTwoName ? store.trackTwoName : track2name}
+                        </label>
                         {/* El icono debería estar oculto hasta que ambas pistas no estén cargadas */}
                         <div className="btn dropdown">
                             <span id="favButton" onClick={handleMix}><i title="Add Mix" style={{ cursor: "pointer" }} className="fa-solid fa-heart-pulse fa-beat-fade" /></span>
