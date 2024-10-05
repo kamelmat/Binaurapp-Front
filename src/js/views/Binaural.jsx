@@ -12,12 +12,12 @@ export const Binaural = () => {
     const deltaRef = useRef(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!store.isLogin) {
-            alert("Please Log-In or Sign-Up");
-            navigate("/login");
-        }
-    }, [store.isLogin, navigate]);
+    // useEffect(() => {
+    //     if (!store.isLogin) {
+    //         alert("Please Log-In or Sign-Up");
+    //         navigate("/login");
+    //     }
+    // }, [store.isLogin, navigate]);
 
     useEffect(() => {
         const scrollToRef = (ref) => {
@@ -134,16 +134,16 @@ export const Binaural = () => {
                 <div className="row tm-albums-container grid">
                     <div className="row featurette">
                         <div id="binaurappCard" className="card">
-                            <div id="alpha-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={"https://t3.ftcdn.net/jpg/08/20/12/24/240_F_820122410_ofHPpJwDAjs919R7IcVto7h8AG2IiqEp.jpg"} alt="Image" />
-                                    <div className="overlay">
-                                        <div id="moreInfo" onClick={handleDisplayInfoFirst}><span class="material-symbols-outlined">info</span>
-                                        <span className="helpTextInfo">More Info</span>
-                                        </div>
-                                    </div>
+                            <div id="alpha-section" className="row">
+                                <div className="col-md-3 order-md-1">                                    
+                                    <figure className="effect-sadie" onClick={handleDisplayInfoFirst}>
+                                        <img id="imageCard" className="rounded mx-auto d-block" src={"https://t3.ftcdn.net/jpg/08/20/12/24/240_F_820122410_ofHPpJwDAjs919R7IcVto7h8AG2IiqEp.jpg"} alt="Image" />
+                                        <figcaption>
+                                            <h2>More info</h2>
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <div className="col-md-6 order-md-2 mx-5">
+                                <div className="col-md-6 order-md-2 lg-mx-5 md-mx-4">
                                     <h5 id="textHeader">Apha Waves</h5>
                                     <p id="textBody">(8Hz – 13Hz) The fastest in the binaural-wave spectrum. These waves are observable on an EGG in the moments of pre-sleep, essential to fading into it.
                                         It is the passage from consciousness to semi-consciousness and light sleep.
@@ -175,15 +175,16 @@ export const Binaural = () => {
                         )}
 
                         <div id="binaurappCard" className="card">
-                            <div id="theta-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={"https://t4.ftcdn.net/jpg/08/02/43/63/240_F_802436395_BB2TxiEuws6vA4dqWO7efJJxSe2qg3KV.jpg"} alt="Image" />
-                                    <div className="overlay">
-                                        <div id="moreInfo"  onClick={handleDisplayInfoSecond}><span class="material-symbols-outlined">info</span>
-                                        <span className="helpTextInfo">More Info</span></div>
-                                    </div>
+                            <div id="theta-section" className="row">
+                                <div className="col-md-3 order-md-1">                                    
+                                    <figure className="effect-sadie" onClick={handleDisplayInfoSecond}>
+                                        <img id="imageCard" className="rounded mx-auto d-block" src={"https://t4.ftcdn.net/jpg/08/02/43/63/240_F_802436395_BB2TxiEuws6vA4dqWO7efJJxSe2qg3KV.jpg"} alt="Image" />
+                                        <figcaption>
+                                            <h2>More info</h2>
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <div className="col-md-6 order-md-2 mx-5">
+                                <div className="col-md-6 order-md-2 lg-mx-5 md-mx-4">
                                     <h5 id="textHeader">Theta Waves</h5>
                                     <p id="textBody">(3hz – 8Hz) Until quite recent we knew very few about these brain state.
                                         We knew it was a passing phase between light sleep, REM and deep sleep.
@@ -215,15 +216,16 @@ export const Binaural = () => {
                         )}
 
                         <div id="binaurappCard" className="card">
-                            <div id="delta-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={"https://t3.ftcdn.net/jpg/07/27/79/86/240_F_727798659_GVhb4YANpW9sRoYjptqB6XQKwW9t5Jyo.jpg"} alt="Image" />
-                                    <div className="overlay">
-                                        <div id="moreInfo" onClick={handleDisplayInfoThird}><span class="material-symbols-outlined">info</span>
-                                        <span className="helpTextInfo">More Info</span></div>
-                                    </div>
+                            <div id="delta-section" className="row">
+                                <div className="col-md-3 order-md-1">                                    
+                                    <figure className="effect-sadie" onClick={handleDisplayInfoThird}>
+                                        <img id="imageCard" className="rounded mx-auto d-block" src={"https://t3.ftcdn.net/jpg/07/27/79/86/240_F_727798659_GVhb4YANpW9sRoYjptqB6XQKwW9t5Jyo.jpg"} alt="Image" />
+                                        <figcaption>
+                                            <h2>More info</h2>
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <div className="col-md-6 order-md-2 mx-5">
+                                <div className="col-md-6 order-md-2 lg-mx-5 md-mx-4">
                                     <h5 id="textHeader">Delta Waves</h5>
                                     <p id="textBody">(0,1HZ – 3HZ) These are the slowest of the binaural spectrum, considering 0 would be brain death (clinically at least).
                                         There is a lot of bibliography about them and they are present in deep sleep (sleep without dreams) and associated with all the neurochemistry release necessary for regeneration.
@@ -255,15 +257,16 @@ export const Binaural = () => {
                         )}
 
                         <div id="binaurappCard" className="card">
-                            <div id="entrainment-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard2" src={"https://t4.ftcdn.net/jpg/08/02/43/63/240_F_802436395_BB2TxiEuws6vA4dqWO7efJJxSe2qg3KV.jpg"} alt="Image" />
-                                    <div className="overlay">
-                                        <div id="moreInfo" onClick={handleDisplayInfoFourth}><span class="material-symbols-outlined">info</span>
-                                        <span className="helpTextInfo">More Info</span></div>
-                                    </div>
+                            <div id="entrainment-section" className="row">
+                                <div className="col-md-3 order-md-1 d-block">
+                                    <figure className="effect-sadie" onClick={handleDisplayInfoFourth}>
+                                        <img id="imageCard" className="rounded mx-auto d-block" src={"https://t4.ftcdn.net/jpg/08/02/43/63/240_F_802436395_BB2TxiEuws6vA4dqWO7efJJxSe2qg3KV.jpg"} alt="Image" />
+                                        <figcaption>
+                                            <h2>More info</h2>
+                                        </figcaption>
+                                    </figure>                                    
                                 </div>
-                                <div className="col-md-8 order-md-2 mx-5">
+                                <div className="col-md-8 order-md-2 lg-mx-5 md-mx-4">
                                     <h5 id="textHeader">Entrainemt</h5>
                                     <p id="textBody">In a nut shell, think of entrainment as synchronization. Your brain is a natural entrainer, so is your heart.</p>
                                     <p id="textBody">It naturally synchs to certain external stimuli, especially if these stimuli are repetitive and constant.

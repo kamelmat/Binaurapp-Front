@@ -14,12 +14,12 @@ export const Playlist = () => {
     const thetaRef = useRef(null);
     const deltaRef = useRef(null);
 
-    useEffect(() => {
-        if (!store.isLogin) {
-            alert("Please Log-In or Sign-Up");
-            navigate("/login");
-        }
-    }, [store.isLogin, navigate]);
+    // useEffect(() => {
+    //     if (!store.isLogin) {
+    //         alert("Please Log-In or Sign-Up");
+    //         navigate("/login");
+    //     }
+    // }, [store.isLogin, navigate]);
 
     useEffect(() => {
         const scrollToRef = (ref) => {
@@ -76,7 +76,7 @@ export const Playlist = () => {
             </div>
             <div className="container">
                 <div id="indexImg" className="row tm-albums-container grid">
-                    <div className="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col">
+                    <div className="col-sm-6 col-12 col-md-6 col-md-3 col-xl-3 tm-album-col">
                         <figure className="effect-sadie" id="glowCard1">
                             <a href="#soundscape-section">
                                 <img src={img1} alt="Image" className="img-fluid" />
@@ -87,7 +87,7 @@ export const Playlist = () => {
                             </a>
                         </figure>
                     </div>
-                    <div className="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col">
+                    <div className="col-sm-6 col-12 col-md-6 col-md-3 col-xl-3 tm-album-col">
                         <figure className="effect-sadie" id="glowCard2">
                             <a href="#music-section">
                                 <img src={"https://t4.ftcdn.net/jpg/07/33/55/15/240_F_733551554_8EeuHjqKGXQj0GjNvw9EJgEb6KbY3fB1.jpg"} alt="Image" className="img-fluid" />
@@ -98,7 +98,7 @@ export const Playlist = () => {
                             </a>
                         </figure>
                     </div>
-                    <div className="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col">
+                    <div className="col-sm-6 col-12 col-md-6 col-md-3 col-xl-3 tm-album-col">
                         <figure className="effect-sadie" id="glowCard3">
                             <a href="#spoti-section">
                                 <img src={"https://t4.ftcdn.net/jpg/04/87/69/93/240_F_487699333_0R5Asoup6cWlpD1TUlMlqyQJEIMtAAKP.jpg"} alt="Image" className="img-fluid" />
@@ -109,7 +109,7 @@ export const Playlist = () => {
                             </a>
                         </figure>
                     </div>
-                    <div className="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col">
+                    <div className="col-sm-6 col-12 col-md-6 col-md-3 col-xl-3 tm-album-col">
                         <figure className="effect-sadie" id="glowCard4">
                             <a href="#mixes-section">
                                 <img src={img2} alt="Image" className="img-fluid" />
@@ -121,18 +121,19 @@ export const Playlist = () => {
                         </figure>
                     </div>
                 </div>
+
                 <div className="row tm-albums-container grid">
-                    <div className="row featurette">
+                    <div className="row">
                         <div id="binaurappCard" className="card">
-                            <div id="soundscape-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={img1} alt="Image" />
+                            <div id="start-section" className="row">
+                                <div className="col-lg-3 order-lg-1 ">
+                                    <img id="imageCard"  className="img-fluid" src={img1} alt="Image" />
                                 </div>
-                                <div className="col-md-8 order-md-2 mx-5">
+                                <div className="col-lg-8 order-lg-2">
                                     <h5 id="textHeader">Soundscapes</h5>
                                     <p id="textBody">
                                     A soundscape is like a soundtrack for your environment. It’s made up of various sounds that create an atmosphere or mood, similar to how a painting creates a visual scene. Unlike a piece of music, which usually has a melody, rhythm, and structure, a soundscape is more about the overall feeling and texture of the sounds. Think of it as the difference between a song and the natural sounds you hear in a forest. A song has a clear beginning, middle, and end, while a soundscape might blend sounds like birds chirping, leaves rustling, and a distant stream to create a relaxing or immersive experience.</p>
-                                    <div className="d-flex justify-content-around">
+                                    <div id="buttonContainer" className="col-12 justify-content-evenly" >
                                         <button type="button" id="greenButtonSlim" data-bs-toggle="dropdown">Select the desired track</button>
                                         <ul className="dropdown-menu">
                                             {store.soundscapeList.map((item, index) => (
@@ -149,15 +150,15 @@ export const Playlist = () => {
                             </div>
                         </div>
                         <div id="binaurappCard" className="card">
-                            <div id="music-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={"https://t4.ftcdn.net/jpg/07/33/55/15/240_F_733551554_8EeuHjqKGXQj0GjNvw9EJgEb6KbY3fB1.jpg"} alt="Image" />
+                            <div id="music-section" className="row">
+                                <div className="col-lg-3 order-lg-1 ">
+                                    <img id="imageCard"  className="img-fluid" src={"https://t4.ftcdn.net/jpg/07/33/55/15/240_F_733551554_8EeuHjqKGXQj0GjNvw9EJgEb6KbY3fB1.jpg"} alt="Image" />
                                 </div>
-                                <div className="col-md-8 order-md-2 mx-5">
+                                <div className="col-lg-8 order-lg-2">
                                     <h5 id="textHeader">Music</h5>
                                     <p id="textBody">You’ll find various types of backing tracks among our suggestions, as we aim to grow with the sonic proposals we offer. Some tracks are already fully binaural, with elements moving in the sound space, creating an immersive experience.</p>
                                     <p id="textBody">Following the guidelines of music therapy and musicology, Binaurapp approaches music from the subjective concept that the listener defines whether the music is pleasant or calming. There is no established or global parameter—it's all about your personal experience.</p>
-                                    <div className="d-flex justify-content-around">
+                                    <div id="buttonContainer" className="col-12 justify-content-evenly" >
                                         <button type="button" id="greenButtonSlim" data-bs-toggle="dropdown">Select the desired track</button>
                                         <ul className="dropdown-menu">
                                             {store.soundscapeList.map((item, index) => (
@@ -174,14 +175,14 @@ export const Playlist = () => {
                             </div>
                         </div>
                         <div id="binaurappCard" className="card">
-                            <div id="spoti-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={"https://t4.ftcdn.net/jpg/04/87/69/93/240_F_487699333_0R5Asoup6cWlpD1TUlMlqyQJEIMtAAKP.jpg"} alt="Image" />
+                            <div id="spoti-section" className="row">
+                                <div className="col-lg-3 order-lg-1 ">
+                                    <img id="imageCard"  className="img-fluid" src={"https://t4.ftcdn.net/jpg/04/87/69/93/240_F_487699333_0R5Asoup6cWlpD1TUlMlqyQJEIMtAAKP.jpg"} alt="Image" />
                                 </div>
-                                <div className="col-md-8 order-md-2 mx-5">
+                                <div className="col-lg-8 order-lg-2">
                                     <h5 id="textHeader">Spotify</h5>
                                     <p id="textBody">We are working hard to integrate Spotify as one of the options for backing tracks. Currently, it is only possible to have Spotify playing in the background due to their policy, which we believe is to protect copyright. In upcoming versions, you will be able to use the Spotify app and play moving binaural waves from Binaurapp. Thank you for your patience and understanding as we work to bring this feature to you!</p>
-                                    <div className="d-flex justify-content-around">
+                                    <div id="buttonContainer" className="col-12 justify-content-evenly" >
                                         <button type="button" id="greenButtonSlim" data-bs-toggle="dropdown">Select the desired track</button>
                                         <ul className="dropdown-menu">
                                            {/*  <li><a className="dropdown-item" href="#">Action</a></li>
@@ -196,14 +197,14 @@ export const Playlist = () => {
                             </div>
                         </div>
                         <div id="binaurappCard" className="card">
-                            <div id="mixes-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={img2} alt="Image" />
+                            <div id="mixes-section" className="row">
+                                <div className="col-lg-3 order-lg-1 ">
+                                    <img id="imageCard"  className="img-fluid" src={img2} alt="Image" />
                                 </div>
-                                <div className="col-md-8 order-md-2 mx-5">
+                                <div className="col-lg-8 order-lg-2">
                                     <h5 id="textHeader">Mixes</h5>
                                     <p id="textBody">In this tab, you will find all the mixes you have saved. We invite you to explore new ways of combining moving binaural waves with different types of soundscapes and save your combinations as mixes.</p>
-                                    <div className="d-flex justify-content-around">
+                                    <div id="buttonContainer" className="col-12 justify-content-evenly" >
                                         <button type="button" id="greenButtonSlim" data-bs-toggle="dropdown">Select the desired Mix</button>
                                         <ul className="dropdown-menu">
                                             {store.mixesList.map((item, index) => (
