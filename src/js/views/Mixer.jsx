@@ -3,8 +3,6 @@ import { Context } from "../store/appContext";
 import "../../styles/mixer.css";
 import { useNavigate } from "react-router-dom";
 
-//Spotify Search
-import SpotifySearch from '../component/SpotifySearch.jsx';
 
 
 export const Mixer = () => {
@@ -31,6 +29,11 @@ export const Mixer = () => {
     const [mixTitle, setMixTitle] = useState('');
     const [error, setError] = useState('');
     const [showModal, setShowModal] = useState(false);
+
+    const [gainNodeOne, setGainNodeOne] = useState(null);
+    const [gainNodeTwo, setGainNodeTwo] = useState(null);
+
+    const [audioCtx, setAudioCtx] = useState(null);
 
     useEffect(() => {
         if (!store.isLogin) {
@@ -69,33 +72,46 @@ export const Mixer = () => {
                 const newTrackTwo = new Audio(trackTwoUrl);
 
                 newTrackOne.crossOrigin = "anonymous";
+                newTrackOne.preload = "auto";
                 newTrackTwo.crossOrigin = "anonymous";
+                newTrackTwo.preload = "auto";
 
-                const audioCtx = new window.AudioContext();
-                const userSource = audioCtx.createMediaElementSource(newTrackOne);
-                const newUserAnalyser = audioCtx.createAnalyser();
-                userSource.connect(newUserAnalyser);
-                newUserAnalyser.connect(audioCtx.destination);
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                setAudioCtx(ctx); // Store the AudioContext in state
+
+                const userSource = ctx.createMediaElementSource(newTrackOne);
+                const newUserAnalyser = ctx.createAnalyser();
+                const gainNodeOne = ctx.createGain(); // Create GainNode for track one
+
+                userSource.connect(gainNodeOne); // Connect source to GainNode
+                gainNodeOne.connect(newUserAnalyser); // Connect GainNode to Analyser
+                newUserAnalyser.connect(ctx.destination); // Connect Analyser to destination
                 newUserAnalyser.fftSize = 256;
                 const bufferLength = newUserAnalyser.frequencyBinCount;
                 const newUserDataArray = new Uint8Array(bufferLength);
 
-                const providedSource = audioCtx.createMediaElementSource(newTrackTwo);
-                const newProvidedAnalyser = audioCtx.createAnalyser();
-                providedSource.connect(newProvidedAnalyser);
-                newProvidedAnalyser.connect(audioCtx.destination);
+                const providedSource = ctx.createMediaElementSource(newTrackTwo);
+                const newProvidedAnalyser = ctx.createAnalyser();
+                const gainNodeTwo = ctx.createGain(); // Create GainNode for track two
+
+                providedSource.connect(gainNodeTwo); // Connect source to GainNode
+                gainNodeTwo.connect(newProvidedAnalyser); // Connect GainNode to Analyser
+                newProvidedAnalyser.connect(ctx.destination); // Connect Analyser to destination
                 newProvidedAnalyser.fftSize = 256;
                 const newProvidedDataArray = new Uint8Array(bufferLength);
 
                 newTrackOne.onended = () => newTrackOne.play();
                 newTrackTwo.onended = () => newTrackTwo.play();
 
+                // Store references to the tracks, gain nodes, and analyzers
                 setTrackOne(newTrackOne);
                 setTrackTwo(newTrackTwo);
                 setUserAnalyser(newUserAnalyser);
                 setProvidedAnalyser(newProvidedAnalyser);
                 setUserDataArray(newUserDataArray);
                 setProvidedDataArray(newProvidedDataArray);
+                setGainNodeOne(gainNodeOne); // Store GainNode for track one
+                setGainNodeTwo(gainNodeTwo); // Store GainNode for track two
             } catch (error) {
                 console.error('Error loading audio files:', error);
                 alert('There was a problem loading the audio files. Please check the URLs and try again.');
@@ -104,6 +120,14 @@ export const Mixer = () => {
             alert('Please enter both audio URLs.');
         }
     };
+
+    const resumeAudioContext = async (audioCtx) => {
+        if (audioCtx.state === 'suspended') {
+            await audioCtx.resume();
+            console.log('Audio context resumed');
+        }
+    };
+
 
     const playAudio = () => {
         if (store.spotifySelected) {
@@ -134,16 +158,22 @@ export const Mixer = () => {
     };
 
     const handleTrackOneVolumeChange = (event) => {
-        if (trackOne) {
-            trackOne.volume = event.target.value;
+        const volume = parseFloat(event.target.value);
+        if (gainNodeOne) {
+            gainNodeOne.gain.setValueAtTime(volume, audioCtx.currentTime); // Set volume using GainNode
+            console.log(`Track One Volume Set: ${volume}`);
         }
     };
 
     const handleTrackTwoVolumeChange = (event) => {
-        if (trackTwo) {
-            trackTwo.volume = event.target.value;
+        const volume = parseFloat(event.target.value);
+        if (gainNodeTwo) {
+            gainNodeTwo.gain.setValueAtTime(volume, audioCtx.currentTime); // Set volume using GainNode
+            console.log(`Track Two Volume Set: ${volume}`);
         }
     };
+
+
 
     // Lógica fav mixes
     // habilitar formulario para que el usuario ingreese el título del mix
@@ -229,10 +259,10 @@ export const Mixer = () => {
                 <div id="mixerConatiner" className="d-flex flex-column bd-highlight mb-3">
                     {/* <SpotifySearch onTrackSelect={handleTrackSelect} /> */}
                     <div id="volumeControlers" className="d-flex justify-content-center">
-                        <input type="range" id="trackOneVolume" ref={trackOneVolumeRef} onChange={handleTrackOneVolumeChange} min="0" max="1" step="0.01" />
+                        <input type="range" id="trackOneVolume" ref={trackOneVolumeRef} onChange={handleTrackOneVolumeChange} min="0" max="1" step="0.01" defaultValue="1" />
                         <div id="trackOneVu"><div id="vuFill" className="card" ref={trackOneVuRef} ></div></div>
                         <div id="trackTwoVu"><div id="vuFill" className="card" ref={trackTwoVuRef}></div></div>
-                        <input type="range" id="trackTwoVolume" ref={trackTwoVolumeRef} onChange={handleTrackTwoVolumeChange} min="0" max="1" step="0.01" />
+                        <input type="range" id="trackTwoVolume" ref={trackTwoVolumeRef} onChange={handleTrackTwoVolumeChange} min="0" max="1" step="0.01" defaultValue="1" />
                     </div>
                     <div id="playerButtons" className="d-flex justify-content-center">
                         <button id="metalButton2" className="dropdown" type="button" data-bs-toggle="dropdown"/*  onClick={() => handleSpotifyLists(item.url)} */>
