@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Modal } from 'react-bootstrap'; // Import Modal from react-bootstrap
 
 // Spotify Auth App
 import { SpotifyAuth } from "../component/SpotifyAuth.jsx";
@@ -13,7 +14,8 @@ export const SignUp = () => {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [passwordError, setPasswordError] = useState(""); // Añadir estado para el error de contraseña
   const navigate = useNavigate();
-
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
+  const [modalMessage, setModalMessage] = useState(""); // State for modal message
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -45,35 +47,61 @@ export const SignUp = () => {
     setRememberMe(false);
   }
 
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Email regex
+    return regex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/; // Password regex
+    return regex.test(password);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     handlePasswordConfirmed();
-    if (passwordError === "") {
-      const dataToSend = { email, password, agreeTerms };
-      const url = `${process.env.BACKEND_URL}/api/signup`;
-      const options = {
-        method: 'POST',
-        body: JSON.stringify(dataToSend),
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(dataToSend)
-      };
-      const response = await fetch(url, options)
-      console.log(response);
-      if (!response.ok) {
-        console.log('Error: ', response.status, response.statusText);
-        return
-      }
-      const data = await response.json()
-      console.log();
-      localStorage.setItem("token", data.access_token)
-      actions.setIsLogin(true)
-      actions.setUser(data.results)
-      console.log(data.access_token);
-      navigate('/profile')
+
+    // Validate email and password
+    if (!validateEmail(email)) {
+      setModalMessage("Please enter a valid email address (format: @xxx.com)");
+      setShowModal(true);
+      return;
+    }
+    if (!validatePassword(password)) {
+      setModalMessage("Password must be at least 8 characters, include one uppercase letter and one special character.");
+      setShowModal(true);
+      return;
+    }
+    if (passwordError !== "") {
+      setModalMessage(passwordError);
+      setShowModal(true);
+      return;
+    }
+
+    const dataToSend = { email, password, agreeTerms };
+    const url = `${process.env.BACKEND_URL}/api/signup`;
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(dataToSend),
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(dataToSend)
     };
-  }
+    const response = await fetch(url, options)
+    console.log(response);
+    if (!response.ok) {
+      console.log('Error: ', response.status, response.statusText);
+      return
+    }
+    const data = await response.json()
+    console.log();
+    localStorage.setItem("token", data.access_token)
+    actions.setIsLogin(true)
+    actions.setUser(data.results)
+    console.log(data.access_token);
+    navigate('/profile')
+  };
 
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -109,6 +137,19 @@ export const SignUp = () => {
         <SpotifyAuth />
         {/* <p className="text-muted" id="termsPolicy">By registering, you are agreeing to Binaurapp's Privacy Policy and Terms of Use.</p> */}
       </form>
+
+      {/* Modal for error messages */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{modalMessage}</Modal.Body>
+        <Modal.Footer>
+          <button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
