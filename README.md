@@ -58,6 +58,7 @@ Additionally, Binaurapp is the only app that allows you to connect to your Spoti
 - Bootstrap
 - Axios (for API calls)
 - Driver.js (for the tour guide functionality)
+- Emailjs-com (for sending emails.)
 
 ## Usage 💻
 
