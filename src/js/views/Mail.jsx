@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import emailjs from '@emailjs/browser'; // Import EmailJS SDK
 import "../../styles/profile.css";
 
 export const Mail = () => {
@@ -14,6 +15,12 @@ export const Mail = () => {
         }
     }, [store.user]);
 
+    // Initialize EmailJS with your public key from .env
+    useEffect(() => {
+        
+        emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY); // Use the public key from .env
+    }, []);
+
     const handleSubject = (event) => {
         setSubject(event.target.value);
     };
@@ -25,14 +32,27 @@ export const Mail = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const result = await actions.sendEmail({ subject, message: comments });
+        const templateParams = {
+            from_name: name,
+            subject: subject,
+            message: comments,
+            to_name: 'Binaurapp',
+            user_email: store.user.email 
+        };
 
-        if (result.success) {
-            alert(result.message);
+        
+        try {
+            const result = await emailjs.send(
+                process.env.REACT_APP_EMAILJS_SERVICE_ID, // Use the service ID from .env
+                process.env.REACT_APP_EMAILJS_TEMPLATE_ID, // Use the template ID from .env
+                templateParams
+            );
+            alert('Email sent successfully!');
             setSubject('');
             setComments('');
-        } else {
-            alert(result.message);
+        } catch (error) {
+            console.error('EmailJS error:', error); // Log the error to the console
+            alert('Failed to send email, please try again.');
         }
     };
 
