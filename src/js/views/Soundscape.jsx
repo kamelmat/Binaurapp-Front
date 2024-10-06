@@ -11,12 +11,12 @@ export const Soundscape = () => {
     const music = useRef(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!store.isLogin) {
-            alert("Please Log-In or Sign-Up");
-            navigate("/login");
-        }
-    }, [store.isLogin, navigate]);
+    // useEffect(() => {
+    //     if (!store.isLogin) {
+    //         alert("Please Log-In or Sign-Up");
+    //         navigate("/login");
+    //     }
+    // }, [store.isLogin, navigate]);
 
     useEffect(() => {
         const scrollToRef = (ref) => {
@@ -135,19 +135,19 @@ export const Soundscape = () => {
                 </div>
 
                 <div className="row tm-albums-container grid">
-                    <div className="row featurette">
+                    <div className="row">
 
                         <div id="binaurappCard" className="card">
-                            <div id="nature-section" className="row featurette">
+                            <div id="nature-section" className="row">
                                 <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={"https://t3.ftcdn.net/jpg/02/22/63/26/240_F_222632647_uMPpbpn4QnJptPz6P3ikfdDkNTDb4ACp.jpg"} alt="Image" />
-                                    <div className="overlay">
-                                        <div id="moreInfo" onClick={handleDisplayInfoFirst}><span class="material-symbols-outlined">info</span>
-                                            <span className="helpTextInfo">More Info</span>
-                                        </div>
-                                    </div>
+                                    <figure className="effect-sadie" onClick={handleDisplayInfoFirst}>
+                                        <img id="imageCard" className="rounded mx-auto d-block" src={"https://t3.ftcdn.net/jpg/02/22/63/26/240_F_222632647_uMPpbpn4QnJptPz6P3ikfdDkNTDb4ACp.jpg"} alt="Image" />
+                                        <figcaption>
+                                            <h2>More info</h2>
+                                        </figcaption>
+                                    </figure>                                    
                                 </div>
-                                <div className="col-md-6 order-md-2 mx-5">
+                                <div className="col-md-6 order-md-2 lg-mx-5 md-mx-4">
                                     <h5 id="textHeader">Nature Sounds</h5>
                                     <p id="textBody">Some people find nature extremelly relaxing. Studies tend to link it to a premeival state in which we spent a large majority of our existence as humans and our brains have kept the memory of.
                                         Sound is wired into our reptilian brain as no other human sense is, arriving first to it and then passing on to the neo-cortex where we interpret through reason, story-telling.
@@ -173,15 +173,16 @@ export const Soundscape = () => {
                         )}
 
                         <div id="binaurappCard" className="card">
-                            <div id="organic-section" className="row featurette">
+                            <div id="organic-section" className="row">
                                 <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={"https://t4.ftcdn.net/jpg/08/02/43/63/240_F_802436395_BB2TxiEuws6vA4dqWO7efJJxSe2qg3KV.jpg"} alt="Image" />
-                                    <div className="overlay">
-                                        <div id="moreInfo" onClick={handleDisplayInfoSecond}><span class="material-symbols-outlined">info</span>
-                                            <span className="helpTextInfo">More Info</span></div>
-                                    </div>
+                                    <figure className="effect-sadie" onClick={handleDisplayInfoSecond}>
+                                        <img id="imageCard" className="rounded mx-auto d-block" src={"https://t4.ftcdn.net/jpg/08/02/43/63/240_F_802436395_BB2TxiEuws6vA4dqWO7efJJxSe2qg3KV.jpg"} alt="Image" />
+                                        <figcaption>
+                                            <h2>More info</h2>
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <div className="col-md-6 order-md-2 mx-5">
+                                <div className="col-md-6 order-md-2 lg-mx-5 md-mx-4">
                                     <h5 id="textHeader">Organic Sounds</h5>
                                     <p id="textBody">Some people find organic sounds extremelly appealing, and this name may encompass a wide variety of sounds.
                                         They can be used in multiple fahsions and multiple purposes.
@@ -209,15 +210,16 @@ export const Soundscape = () => {
                         )}
 
                         <div id="binaurappCard" className="card">
-                            <div id="music-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard" src={"https://t4.ftcdn.net/jpg/06/57/98/19/240_F_657981926_WYtt9d9vRmcrQqvp5Hy5MTT6G6BoL0n0.jpg"} alt="Image" />
-                                    <div className="overlay">
-                                        <div id="moreInfo" onClick={handleDisplayInfoThird}><span class="material-symbols-outlined">info</span>
-                                            <span className="helpTextInfo">More Info</span></div>
-                                    </div>
+                            <div id="music-section" className="row">
+                                <div className="col-md-3 order-md-1">                                    
+                                    <figure className="effect-sadie" onClick={handleDisplayInfoThird}>
+                                        <img id="imageCard" className="rounded mx-auto d-block" src={"https://t4.ftcdn.net/jpg/06/57/98/19/240_F_657981926_WYtt9d9vRmcrQqvp5Hy5MTT6G6BoL0n0.jpg"} alt="Image" />
+                                        <figcaption>
+                                            <h2>More info</h2>
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <div className="col-md-6 order-md-2 mx-5">
+                                <div className="col-md-6 order-md-2 lg-mx-5 md-mx-4">
                                     <h5 id="textHeader">Sound & Musical Elements</h5>
                                     <p id="textBody">A music piece is expected to have some conductivity, structure and form, which appeals to our more "awake" state in general (not exclusively).
                                         The brain is always trying to "catch" the "pattern", when it does, you get dopamine, which is opposite to what you want if you are trying to relax or sleep (though in a cycle of hours it will generate serotonine but, it takes time).
@@ -243,15 +245,16 @@ export const Soundscape = () => {
                         )}
 
                         <div id="binaurappCard" className="card">
-                            <div id="lists-section" className="row featurette">
-                                <div className="col-md-3 order-md-1">
-                                    <img id="imageCard2" src={"https://t3.ftcdn.net/jpg/05/54/95/76/240_F_554957692_l55wWG1XGkV33Anr0WtV2REAbE6Am3e3.jpg"} alt="Image" />
-                                    <div className="overlay">
-                                        <div id="moreInfo" onClick={handleDisplayInfoFourth}><span class="material-symbols-outlined">info</span>
-                                            <span className="helpTextInfo">More Info</span></div>
-                                    </div>
+                            <div id="lists-section" className="row">
+                                <div className="col-md-3 order-md-1 d-block">
+                                    <figure className="effect-sadie" onClick={handleDisplayInfoFourth}>
+                                        <img id="imageCard" className="rounded mx-auto d-block" src={"https://t3.ftcdn.net/jpg/05/54/95/76/240_F_554957692_l55wWG1XGkV33Anr0WtV2REAbE6Am3e3.jpg"} alt="Image" />
+                                        <figcaption>
+                                            <h2>More info</h2>
+                                        </figcaption>
+                                    </figure>                                    
                                 </div>
-                                <div className="col-md-8 order-md-2 mx-5">
+                                <div className="col-md-8 order-md-2 lg-mx-5 md-mx-4">
                                     <h5 id="textHeader">Music</h5>
                                     <p id="textBody">There is no "one-size" fits all in the world of music related things, and when it comes to our brain, well, let´s just put it like there´s more than meets the eye.</p>
                                     <p id="textBody">Basically, you are you, as I am I (we could get very philosophical), and there is no absolute value for: "beauty", "realxing", "energetic", etc. You are the narrator of

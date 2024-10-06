@@ -40,27 +40,35 @@
 }
 
 #profileImg {
-    height: 30px;
-    width: 30px;
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
-    background-color: #ffffff;
-    margin-left: 3px;
+    background-color: #F8F8F8;
+    margin-left: -10px;
+}
+
+#logoutIcon {
+    margin-left: -10px;
 }
 
 #navbarText {
-    color: #ffffff;
+    color: #F8F8F8;
     font-family: "Baumans", system-ui;
     font-size: 16px;
 }
 
+#menuIcon {
+    color:#F8F8F8;
+}
+
 #sidebarIcons {
-    color: #ffffff;
+    color: #F8F8F8;
     margin-top: 20px;
     text-decoration: none;
 }
 
 #sidebarText {
-    color: #ffffff;
+    color: #F8F8F8;
     font-family: "Baumans", system-ui;
     font-size: 16px;
     margin-top: -3px;
@@ -68,13 +76,13 @@
 }
 
 #sidebarIconsBottom {
-    color: #ffffff;
+    color: #F8F8F8;
     margin-top: 20px;
     align-items: bottom;
 }
 
 #sidebarTextBottom {
-    color: #ffffff;
+    color: #F8F8F8;
     font-family: "Baumans", system-ui;
     font-size: 16px;
     margin-top: 2px;
@@ -154,7 +162,7 @@
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: #F8F8F8;
     margin-left: 3px;
 }
 
@@ -171,7 +179,7 @@
 #editMixButtons {
     margin: -10px;
     align-items: center;
-    background-color: #ffffff00;
+    background-color: #F8F8F800;
 }
 
 #listHeader {
@@ -180,7 +188,7 @@
 }
 
 #userHeader {
-    color: #ffffff;
+    color: #F8F8F8;
     background-color: #21251F;
     margin-top: 50px;
     margin-bottom: 20px;
@@ -195,7 +203,7 @@
 }
 
 #mixDetails {
-    color: #ffffff;
+    color: #F8F8F8;
     /* background-color: #353b3250; */
 }
 
@@ -225,7 +233,7 @@
 }
 
 #tableData {
-    color: #ffffff;
+    color: #F8F8F8;
     margin-top: 5px;
     margin-left: 10px;
     margin-right: 10px;

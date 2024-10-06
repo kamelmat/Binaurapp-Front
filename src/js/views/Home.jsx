@@ -10,11 +10,10 @@ export const Home = () => {
 	return (
 		<div className="container-fluid home">
 			<div className="row justify-content-center">
-				<div className="className col-12 text-center">
-					<div className="className div">
-						<img className="home-image img-fluid mb-4" alt="Stocksy" src={homepic} />
-						<div className="text-wrapper mb-4">What’s Binaurapp?</div>
-						<div className="col-5 col-md-5 col-lg-5 col-sm-5 mx-auto mb-4">
+				<div className=" col-5 text-center">
+					<div className="mb-4">
+						<img className="home-image img-fluid" alt="Stocksy" src={homepic} />
+						<div className="text-wrapper">What’s Binaurapp?</div>
 							<p className="content">
 								Binaurapp is an innovative application designed to enhance your mental well-being through binaural audio.
 								Our goal is to help you achieve states of sleep, relaxation, concentration, and well-being using advanced sound technologies.
@@ -27,7 +26,6 @@ export const Home = () => {
 								Additionally, Binaurapp is the only app that allows you to connect to your Spotify account to choose your desired music, based on the music therapy theory that no music is inherently relaxing or stimulating—it always depends on the user and their cultural and personal background.
 								Finally, the magic is you.
 							</p>
-						</div>
 						<div className="d-flex justify-content-center mb-4">
 							<Link to="/signup"> <button id="greenButton" className="text-wrapper-2">Try Now </button></Link>
 						</div>
